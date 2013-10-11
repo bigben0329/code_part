@@ -1,0 +1,49 @@
+ #!/bin/bash
+
+echo " 222 = > 10.12.193.222 "
+echo " 223 = > 10.12.193.223 "
+echo " 228 = > 172.17.139.228"
+echo " 244 = > 10.149.22.244 餐厅上海测试环境"
+echo " 178 = > 10.152.13.178 魔卡冷备数据"
+
+read IP 
+USER=user_00
+PWD=isd!@#user
+
+case $IP in
+	"222")
+		IP="10.12.193.222"
+		USER="farm"
+		PWD="farm@ieg"
+	;;
+
+	"223")
+		IP="10.12.193.223"
+		USER="farm"
+		PWD="farm@ieg"
+	;;
+
+	"178")
+		IP="10.152.13.178"
+	;;
+
+	"244")
+		IP="10.149.22.244"
+	;;
+	
+	"228")
+		IP="172.17.139.228"
+	;;
+
+
+	*)
+		echo "not found $IP"
+		exit
+	;;
+
+esac 
+
+echo "connecting $IP ... "	
+sleep 1
+/home/user_00/shell/msh.sh -h $IP -u $USER -p $PWD
+	
